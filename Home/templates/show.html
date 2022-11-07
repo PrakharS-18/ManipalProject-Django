@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet'/>
+    <link rel="stylesheet" href="static/css/showpagestyles.css"/>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <title>Vamos</title>
+</head>
+<body>
+
+<div class="container">
+    {% for hospital in filter_type %}
+    <form method="post" action="/order">
+        {% csrf_token %}
+        <!-- <div class="row"> -->
+
+        <div class="card">
+            <div class="cardheader">
+
+                <img src="/static/images/final1.jpg" alt="Avatar" style="width:100%">
+                <div class="cardbody">
+                    <div class="Hospital-Name one">
+                        <label for="">Hospital Name :</label>
+                        <input type="text" name="hospitalName" value="{{hospital.Hospital_Name}}">
+                    </div>
+                    <div class="one">
+                        <label for="">Equipment Name :</label>
+                        <input type="text" name="equipmentName" value="{{subproduct_name}}">
+                    </div>
+                    <div class="Cost one">
+                        <label for="">Rental Cost :</label>
+                        <input type="text" name="equipmentCost" value="{{product_name}}">
+                    </div>
+                    <div class="one">
+                        <label for="">Hospital Location :</label>
+                        <input type="text" name="hospitalLocation" value="{{hospital.Hospital_Location}}">
+                    </div>
+                    {% comment %} <%if(hospital.distance){%>
+                    <div class="one">
+                        <label for="">Distance (km) :</label>
+                        <input type="text" name="distance" value="<%= hospital.distance %>">
+                    </div>
+                    <%}%>
+                    <%if(hospital.rating){%>
+                    <div class="one">
+                        <label for="">Hospital Rating :</label>
+                        <input type="text" name="rating" value="<%=hospital.rating %>" placeholder=<%=hospital.rating%>>
+                    </div>
+                    <%}%> {% endcomment %}
+                    <div class="one">
+                        <label for="">Quantity Required :</label>
+                        <input type="text" name="equipmentrequired" value="{{quantity_required}}">
+                    </div>
+                    <div class="one">
+                        <label for="">Quantity Available :</label>
+                        <input type="text" name="equipmentQuantity" value="<%= hospital.quantity %>">
+                    </div>
+                    <div class="one">
+                        <label for="">Due Date:</label>
+                        <input type="date" name="date" value="{{due_date}}" placeholder="DueDate">
+                    </div>
+                    <div class="exbutton">
+                        <button type="submit" class="btn btn-primary">Select</button>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+
+
+        </div>
+    </form>
+    {% endfor %}
+</div>
+
+</body>
+</html>

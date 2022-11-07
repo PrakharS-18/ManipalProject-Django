@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/products.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- nav bar start -->
+    <header>
+      <div class="navbar">
+        <li class="navleft">
+          <img
+            id="favicon"
+            src="/static/images/favicon.jpeg"
+            alt="Italian Trulli"
+          />
+        </li>
+        <ul id="nav" class="navright">
+          <li>
+            <a href="/home">Home <i class="fa-solid fa-house"></i></a>
+          </li>
+          <li>
+            <a href="/home#statistics"
+              >Statistics <i class="fa-solid fa-list-ol"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/home#rental"
+              >Rental <i class="fa-solid fa-cart-plus"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/home#contact"
+              >Contact <i class="fa-solid fa-phone"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- navbar end -->
+    <div class="heading">
+      <div class="bullet">
+        <img src="../static/images/bullet.png" alt="" />
+      </div>
+      <div id="title">{{product_detail.title}}</div>
+    </div>
+
+    <div class="rental">
+      <div class="productstype">
+
+        {% for subproduct  in subproducts %}
+        <a href="/?subproduct={{subproduct.id}}">
+            <img src="../{{subproduct.image}}" alt="">
+             <div class="text">{{subproduct.title}}</div>
+        </a>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </body>
+</html>
